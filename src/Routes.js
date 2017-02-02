@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  } from 'react-native';
+import { Platform } from 'react-native';
 import { Actions,Scene,Router } from 'react-native-router-flux';
 import Point from './components/Point';
 import FirstScreen from './components/FirstScreen';
@@ -31,8 +31,17 @@ export default class AppRouter extends Component {
     }
 }
 const styles = {
-    tabBarStyle: {
-        top: 0,
-        backgroundColor: '#95a5a6'
-    }
+    ...Platform.select({
+        ios: {
+            tabBarStyle: {
+                backgroundColor: '#95a5a6'
+            }
+        },
+        android: {
+            tabBarStyle: {
+                top: 0,
+                backgroundColor: '#95a5a6'
+            }
+        }
+    })
 }
